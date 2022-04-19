@@ -28,14 +28,14 @@ public class TIleGeneration : MonoBehaviour
             int rand = Random.Range(0, 2);
             var DefaultTile = TilePrefabs[rand];
             var tile = Instantiate(DefaultTile, new Vector3(x * 2, 0, z), Quaternion.identity);
+   
+         
             x++;
             tile.gameObject.transform.SetParent(tilesParent.gameObject.transform);
             GridTiles.Add(tile);
+           
 
         }
     }
-    void Update()
-    {
-        
-    }
+  
 }

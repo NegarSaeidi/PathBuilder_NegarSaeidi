@@ -739,7 +739,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 5b04f90a24aa2e549940cd046e8dcf4b, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.95
+      value: 0.03
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 5b04f90a24aa2e549940cd046e8dcf4b, type: 3}
       propertyPath: m_LocalPosition.y
@@ -971,8 +971,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   walkSpeed: 5
   runSpeed: 10
-  jumpForce: 5
-  aimSensitivity: 1
+  jumpForce: 2
+  aimSensitivity: 0.2
   inputVector: {x: 0, y: 0}
   gameEnd: 0
   followTarget: {fileID: 1885753733}
@@ -1056,6 +1056,21 @@ MonoBehaviour:
   m_DefaultActionMap: Player
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
+--- !u!114 &552503464
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 552503456}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0f32d6573662bba46a2c4fe6b2a01717, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tilePrefab: {fileID: 4632197277450551585, guid: b101671638b1afa499b23f9ad4138eda, type: 3}
+  tileStackParent: {fileID: 722089932}
+  checkedTIle: {fileID: 2100000, guid: 94f7cdd939b8b274c95b4c0d75508010, type: 2}
 --- !u!4 &638228748 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 65f1de3d0e507944eaebedd61663be26, type: 3}
@@ -1088,7 +1103,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 671056414}
   m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: -0.009, y: 4.08, z: 0.525}
+  m_LocalPosition: {x: -0.009, y: 4.08, z: 0.509}
   m_LocalScale: {x: 0.034925, y: 12.447, z: 1.1335}
   m_Children: []
   m_Father: {fileID: 1310677121}
@@ -1259,6 +1274,36 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
+--- !u!1 &722089932
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 722089933}
+  m_Layer: 0
+  m_Name: Tile Stack
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &722089933
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 722089932}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.671, y: -0.102, z: 0.065}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 552503458}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &725580482 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 65f1de3d0e507944eaebedd61663be26, type: 3}
@@ -2210,7 +2255,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1318744088}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.549, y: 4.08, z: 0.044}
+  m_LocalPosition: {x: 0.499, y: 4.08, z: 0.044}
   m_LocalScale: {x: 0.034925, y: 12.447, z: 1.1335}
   m_Children: []
   m_Father: {fileID: 1310677121}
