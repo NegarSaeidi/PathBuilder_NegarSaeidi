@@ -15,7 +15,7 @@ public class CountDown : MonoBehaviour
         yield return new WaitForSeconds(time);
         Readytxt.gameObject.SetActive(false);
         GoTxt.SetActive(true);
-        StartCoroutine(causeDelayForGo(1.0f));
+        StartCoroutine(causeDelayForGo(1.5f));
     }
     IEnumerator causeDelayForGo(float time)
     {

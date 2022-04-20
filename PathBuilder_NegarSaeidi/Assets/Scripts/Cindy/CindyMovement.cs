@@ -41,8 +41,8 @@ public class CindyMovement : MonoBehaviour
         rigidBody = GetComponent<Rigidbody>();
         playerController = GetComponent<PlayerController>();
         inputVector = Vector2.zero;
-       IsPaused = false;
-       win = false;
+        IsPaused = false;
+        win = false;
         lose = false;
         startMovement = false;
 

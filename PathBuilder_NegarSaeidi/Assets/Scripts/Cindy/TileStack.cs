@@ -12,6 +12,7 @@ public class TileStack : MonoBehaviour
     public static bool TimeIsUp;
     private void Start()
     {
+        TimeIsUp = false;
         TilesStack = new List<GameObject>();
         YPlacement = 0;
     }

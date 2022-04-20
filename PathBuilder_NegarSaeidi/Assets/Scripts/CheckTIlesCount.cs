@@ -10,17 +10,24 @@ public class CheckTIlesCount : MonoBehaviour
     public GameObject tileParent;
     private float ZPlacement;
     public GameObject loseDoor;
+    private bool bridgeBuilt;
+    private void Start()
+    {
+        bridgeBuilt = false;
+    }
     private void OnTriggerEnter(Collider other)
     {
        
         timer.SetActive(false);
         GetComponent<AudioSource>().Play();
+        if(!bridgeBuilt)
         BuildBridge();
 
     }
 
     private void BuildBridge()
     {
+        bridgeBuilt = true;
         for(int i=0; i< TileStack.TilesStack.Count; i++)
         {
             var tile = Instantiate(tilePrefab, tileParent.transform, true);
