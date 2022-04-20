@@ -9,6 +9,7 @@ public class TileStack : MonoBehaviour
     public static List<GameObject> TilesStack;
     private float YPlacement;
     public Material checkedTIle;
+    public static bool TimeIsUp;
     private void Start()
     {
         TilesStack = new List<GameObject>();
@@ -16,7 +17,7 @@ public class TileStack : MonoBehaviour
     }
     private void OnCollisionEnter(Collision other)
     {
-        if(other.gameObject.CompareTag("Red") && (other.gameObject.GetComponent<MeshRenderer>().materials[1].color != checkedTIle.color) )
+        if(other.gameObject.CompareTag("Red") && (other.gameObject.GetComponent<MeshRenderer>().materials[1].color != checkedTIle.color) && !TimeIsUp )
         {
             other.gameObject.GetComponent<MeshRenderer>().materials[1].color = checkedTIle.color;
             TileStackGeneration();

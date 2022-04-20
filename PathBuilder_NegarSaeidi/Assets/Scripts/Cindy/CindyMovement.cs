@@ -17,7 +17,7 @@ public class CindyMovement : MonoBehaviour
     public float aimSensitivity = 5.0f;
     public Vector2 inputVector = Vector2.zero;
     Vector3 moveDirection = Vector3.zero;
-    Vector2 lookInput = Vector2.zero;
+    public Vector2 lookInput = Vector2.zero;
 
     public bool gameEnd;
 
@@ -25,36 +25,34 @@ public class CindyMovement : MonoBehaviour
     Animator playerAnimator;
     //public GameObject gameFinishText;
     //public GameObject mainmenuButton;
-   // public GameObject pausePanel;
+   public GameObject pausePanel;
     public readonly int movementXHash = Animator.StringToHash("MovementX");
     public readonly int movementYHash = Animator.StringToHash("MovementY");
 
     public readonly int isRunningHash = Animator.StringToHash("IsRunning");
 
     public GameObject followTarget;
-  
 
 
+    public static bool IsPaused;
+    public static bool startMovement;
     private void Awake()
     {
         playerAnimator = GetComponent<Animator>();
         rigidBody = GetComponent<Rigidbody>();
         playerController = GetComponent<PlayerController>();
+        inputVector = Vector2.zero;
       //  mainmenuButton.SetActive(false);
        // pausePanel.SetActive(false);
-    }
-
-    void Start()
-    {
-      
-  
-
     }
 
 
     void Update()
     {
-        followTarget.transform.rotation *= Quaternion.AngleAxis(lookInput.x * aimSensitivity, Vector3.up);
+        if (startMovement && !IsPaused)
+        {
+
+            followTarget.transform.rotation *= Quaternion.AngleAxis(lookInput.x * aimSensitivity, Vector3.up);
         followTarget.transform.rotation *= Quaternion.AngleAxis(lookInput.y * aimSensitivity, Vector3.left);
 
         var angles = followTarget.transform.localEulerAngles;
@@ -72,35 +70,49 @@ public class CindyMovement : MonoBehaviour
         followTarget.transform.localEulerAngles = angles;
         transform.rotation = Quaternion.Euler(0, followTarget.transform.rotation.eulerAngles.y, 0);
         followTarget.transform.localEulerAngles = new Vector3(angles.x, 0, 0);
-          transform.Rotate(Vector3.up * inputVector.x);
+            //  transform.Rotate(Vector3.up * inputVector.x);
 
 
-       
-        if (!(inputVector.magnitude > 0)) moveDirection = Vector3.zero;
+
+            if (!(inputVector.magnitude > 0))
+            {
+              
+                moveDirection = Vector3.zero;
+            }
         moveDirection = transform.forward * inputVector.y + transform.right * inputVector.x;
         float currentSpeed = playerController.isRunning ? runSpeed : walkSpeed;
         Vector3 movementDirection = moveDirection * (currentSpeed * Time.deltaTime);
         transform.position += movementDirection;
+         
+        }
     }
     public void OnMovement(InputValue value)
     {
+        if (!IsPaused)
+        {
             inputVector = value.Get<Vector2>();
             playerAnimator.SetFloat(movementXHash, inputVector.x);
-           playerAnimator.SetFloat(movementYHash, inputVector.y);
-       
+            playerAnimator.SetFloat(movementYHash, inputVector.y);
+        }
+
     }
+ 
     public void OnRun(InputValue value)
     {
+        if (!IsPaused)
+        {
             playerController.isRunning = value.isPressed;
-           playerAnimator.SetBool(isRunningHash, playerController.isRunning);
-        
+            playerAnimator.SetBool(isRunningHash, playerController.isRunning);
+        }
     }
    
     public void OnPause(InputValue value)
     {
         playerController.isPaused = value.isPressed;
-        //pausePanel.SetActive(true);
-    
+       pausePanel.SetActive(true);
+        Time.timeScale = 0;
+        IsPaused = true;
+
     }
     public void OnLook(InputValue value)
     {

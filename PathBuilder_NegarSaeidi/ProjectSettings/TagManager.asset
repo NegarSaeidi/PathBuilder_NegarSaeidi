@@ -9,6 +9,7 @@ TagManager:
   - Yellow
   - White
   - Ground
+  - Bridge
   layers:
   - Default
   - TransparentFX
