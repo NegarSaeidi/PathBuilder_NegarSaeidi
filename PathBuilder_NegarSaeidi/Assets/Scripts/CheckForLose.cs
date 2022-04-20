@@ -24,7 +24,8 @@ public class CheckForLose : MonoBehaviour
         }
         else if(other.gameObject.CompareTag("WinDoor"))
         {
-            Destroy(gameObject);
+            //Destroy(gameObject);
+            print("overlap");
         }
     }
 }

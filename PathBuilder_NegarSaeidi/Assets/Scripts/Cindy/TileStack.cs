@@ -19,6 +19,7 @@ public class TileStack : MonoBehaviour
     {
         if(other.gameObject.CompareTag("Red") && (other.gameObject.GetComponent<MeshRenderer>().materials[1].color != checkedTIle.color) && !TimeIsUp )
         {
+            other.gameObject.GetComponent<AudioSource>().Play();
             other.gameObject.GetComponent<MeshRenderer>().materials[1].color = checkedTIle.color;
             TileStackGeneration();
         }

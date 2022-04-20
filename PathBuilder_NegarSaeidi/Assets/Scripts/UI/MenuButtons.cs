@@ -13,4 +13,16 @@ public class MenuButtons : MonoBehaviour
         SceneManager.LoadScene("Tutorial");
 
     }
+    public void OnMenu()
+    {
+        SceneManager.LoadScene("Menu");
+
+
+    }
+    public void OnCredit()
+    {
+        SceneManager.LoadScene("Credit");
+
+
+    }
 }

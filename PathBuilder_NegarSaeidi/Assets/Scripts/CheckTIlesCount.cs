@@ -14,7 +14,7 @@ public class CheckTIlesCount : MonoBehaviour
     {
        
         timer.SetActive(false);
-     
+        GetComponent<AudioSource>().Play();
         BuildBridge();
 
     }
