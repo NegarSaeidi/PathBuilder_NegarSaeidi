@@ -9,6 +9,7 @@ public class CheckTIlesCount : MonoBehaviour
     public GameObject tilePrefab;
     public GameObject tileParent;
     private float ZPlacement;
+    public GameObject loseDoor;
     private void OnTriggerEnter(Collider other)
     {
        
@@ -29,5 +30,7 @@ public class CheckTIlesCount : MonoBehaviour
 
             ZPlacement += 2f;
         }
+        var loseCheckBox = Instantiate(loseDoor, tileParent.transform, true);
+        loseCheckBox.transform.position = new Vector3(tileParent.transform.position.x, tileParent.transform.position.y, tileParent.transform.position.z - ZPlacement);
     }
 }

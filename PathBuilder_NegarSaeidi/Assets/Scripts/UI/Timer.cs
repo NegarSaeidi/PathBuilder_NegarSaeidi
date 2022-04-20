@@ -10,11 +10,12 @@ public class Timer : MonoBehaviour
     public GameObject closeDoor, openDoor;
     private void Start()
     {
+        startTime = false;
         time = 10;
     }
     void Update()
     {
-        if (startTime)
+        if (startTime && !CindyMovement.IsPaused)
         {
             if (time > 1)
             {

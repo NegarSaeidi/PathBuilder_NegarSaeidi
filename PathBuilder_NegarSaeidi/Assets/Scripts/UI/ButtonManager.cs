@@ -9,13 +9,14 @@ public class ButtonManager : MonoBehaviour
     public void OnReusme()
     {
         pausePanel.SetActive(false);
-        Time.timeScale = 1;
+        
         CindyMovement.IsPaused = false;
 
     }
     public void OnMenu()
     {
         SceneManager.LoadScene("Menu");
-
+      
+    
     }
 }

@@ -23,8 +23,7 @@ public class CindyMovement : MonoBehaviour
 
     Rigidbody rigidBody;
     Animator playerAnimator;
-    //public GameObject gameFinishText;
-    //public GameObject mainmenuButton;
+
    public GameObject pausePanel;
     public readonly int movementXHash = Animator.StringToHash("MovementX");
     public readonly int movementYHash = Animator.StringToHash("MovementY");
@@ -33,7 +32,7 @@ public class CindyMovement : MonoBehaviour
 
     public GameObject followTarget;
 
-
+    public static bool win, lose;
     public static bool IsPaused;
     public static bool startMovement;
     private void Awake()
@@ -42,14 +41,18 @@ public class CindyMovement : MonoBehaviour
         rigidBody = GetComponent<Rigidbody>();
         playerController = GetComponent<PlayerController>();
         inputVector = Vector2.zero;
-      //  mainmenuButton.SetActive(false);
-       // pausePanel.SetActive(false);
+       IsPaused = false;
+       win = false;
+        lose = false;
+        startMovement = false;
+
+
     }
 
 
     void Update()
     {
-        if (startMovement && !IsPaused)
+        if (startMovement && !IsPaused && !win && !lose)
         {
 
             followTarget.transform.rotation *= Quaternion.AngleAxis(lookInput.x * aimSensitivity, Vector3.up);
@@ -70,8 +73,7 @@ public class CindyMovement : MonoBehaviour
         followTarget.transform.localEulerAngles = angles;
         transform.rotation = Quaternion.Euler(0, followTarget.transform.rotation.eulerAngles.y, 0);
         followTarget.transform.localEulerAngles = new Vector3(angles.x, 0, 0);
-            //  transform.Rotate(Vector3.up * inputVector.x);
-
+          
 
 
             if (!(inputVector.magnitude > 0))
@@ -88,7 +90,7 @@ public class CindyMovement : MonoBehaviour
     }
     public void OnMovement(InputValue value)
     {
-        if (!IsPaused)
+        if (!IsPaused && !win && !lose)
         {
             inputVector = value.Get<Vector2>();
             playerAnimator.SetFloat(movementXHash, inputVector.x);
@@ -110,7 +112,7 @@ public class CindyMovement : MonoBehaviour
     {
         playerController.isPaused = value.isPressed;
        pausePanel.SetActive(true);
-        Time.timeScale = 0;
+       
         IsPaused = true;
 
     }

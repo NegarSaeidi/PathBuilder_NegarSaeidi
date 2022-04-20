@@ -10,6 +10,8 @@ TagManager:
   - White
   - Ground
   - Bridge
+  - WinDoor
+  - LosePanel
   layers:
   - Default
   - TransparentFX
